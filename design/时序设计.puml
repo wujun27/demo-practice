@@ -1,7 +1,23 @@
 @startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+|应用服务|
+start
+:获取用户角色;
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+|用户服务|
+:检查用户是否是管理员;
+
+|应用服务|
+if (用户是否是管理员?) then (false)
+   :返回权限异常;
+   end
+endif
+
+:创建角色;
+|用户服务|
+:创建角色;
+
+|应用服务|
+:返回成功;
+
+end
 @enduml

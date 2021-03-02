@@ -1,26 +1,26 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class 用户 {
+   用户ID
+   用户账号
+   用户名
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class 角色 {
+   ID
+   角色编码
+   角色名称
+   角色描述
 }
+
+class 权限 {
+   ID
+   权限编码
+   资源类型
+   操作
+}
+用户 "多" --* "多" 角色:包含
+角色 "多" --* "多" 权限:包含
+
 
 @enduml

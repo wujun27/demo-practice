@@ -1,22 +1,9 @@
 @startuml
-scale 350 width
-[*] --> NotShooting
 
-state NotShooting {
-  [*] --> Idle
-  Idle --> Configuring : EvConfig
-  Configuring --> Idle : EvConfig
-}
+[*] --> Active : 创建角色
+Active --> Deactive: 禁用角色
+Deactive --> Active : 启用角色
+Deactive --> Deleted : 删除角色
+Deleted --> [*]
 
-state Configuring {
-  [*] --> NewValueSelection
-  NewValueSelection --> NewValuePreview : EvNewValue
-  NewValuePreview --> NewValueSelection : EvNewValueRejected
-  NewValuePreview --> NewValueSelection : EvNewValueSaved
-
-  state NewValuePreview {
-     State1 -> State2
-  }
-
-}
 @enduml
